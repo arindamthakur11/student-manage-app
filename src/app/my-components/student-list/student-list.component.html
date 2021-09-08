@@ -1,0 +1,43 @@
+<div class="col-8 mx-auto">
+  <div *ngIf="showSuccessAlert" class="alert alert-success" role="alert">
+    Student has been deleted
+  </div>
+  <div *ngIf="showErrorAlert" class="alert alert-danger" role="alert">
+    Something Went Wrong
+  </div>
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Class</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <th scope="row">{{student.id}}</th>
+        <td>{{student.name}}</td>
+        <td>{{student.class}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.address}}</td>
+        <td (click)="deleteStudent(student)">
+          <i class="bi bi-trash-fill">
+
+          </i>
+
+        </td>
+        <td>
+          <a [routerLink]="['/update-student',student.id]">
+            <i class="bi ml-3 bi-pencil-square">
+
+            </i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
